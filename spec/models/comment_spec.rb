@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
 
   context 'Validations should be working' do
     it 'validations should return true' do
-      expect(@new_comment.text).to satisfy { |x| x.length <= 150 }
+      expect(@new_comment.text).to(satisfy { |x| x.length <= 150 })
     end
   end
 end

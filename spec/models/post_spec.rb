@@ -11,15 +11,15 @@ RSpec.describe Post, type: :model do
 
   context 'All test implementation for Post Model' do
     it 'Check for length of post title' do
-      expect(@new_post.title).to satisfy {|x| x.length <= 250}
+      expect(@new_post.title).to(satisfy { |x| x.length <= 250 })
     end
 
-     it 'Method should return false' do
+    it 'Method should return false' do
       expect(@new_post.last_five.length).to be 0
     end
 
-     it 'likes counter validations should return true' do
-      expect(@new_post.likes_counter).to satisfy { |n| n >= 0 }
+    it 'likes counter validations should return true' do
+      expect(@new_post.likes_counter).to(satisfy { |n| n >= 0 })
     end
   end
 end
