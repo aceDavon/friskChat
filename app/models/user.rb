@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates_format_of :photo, with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: 'field is not a valid url'
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  def recent_posts(id)
-    @user_posts = Post.where(author_id: id).order(created_at: :desc).limit(3)
+  def recent_posts
+    posts.includes([:author]).last(3)
   end
 end
