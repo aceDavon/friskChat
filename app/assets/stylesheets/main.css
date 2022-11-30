@@ -63,8 +63,18 @@
   padding: 12px 4px;
 }
 
-.user-recent-post {
+.user-recent-post,
+.post-info {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.post-info {
+  margin: auto;
+  padding: 12px 0;
+}
+
+.user-posts {
+  width: 50%;
 }
