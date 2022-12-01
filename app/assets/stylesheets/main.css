@@ -78,3 +78,49 @@
 .user-posts {
   width: 50%;
 }
+
+.form-container {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.post-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+  gap: 16px;
+  margin: auto;
+  background-color: rgb(189, 179, 179);
+  padding: 40px 12px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(26, 24, 24, 0.382);
+}
+
+.form-blocks {
+  width: 100%;
+  padding: 2px 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+.primary-btn {
+  background-color: rgba(35, 120, 52, 0.709);
+  padding: 4px 12px;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.form-header {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+}
