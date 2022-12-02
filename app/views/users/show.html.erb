@@ -12,8 +12,8 @@
   </div>
   <p class="user-bio"><%= @user.bio %></p>
       <%= render "users/users_bio" %>
-      <div class="button-user">
-        <button class="button">
+      <div class="btn-container">
+        <button class="link-btn">
           <%= link_to "See all posts", user_posts_path(@user), class:"text-button" %>
         </button>
       </div>

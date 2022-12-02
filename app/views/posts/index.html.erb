@@ -11,25 +11,15 @@
       </span>
     </div>
   </div>
-  <div class='user-posts post-info'>
+  <div class="user-posts">
     <% @user.posts.each do |post| %>
-      <div class='list-posts'>
-        <h5><%= link_to post.title, user_post_path(@user, post) %></h5>
-        <p><%= post.text %></p>
-        <span class='like-comment'>
-          Comments: <%= post.comments_counter || 0 %>, 
-          Likes: <%= post.likes_counter || 0 %> 
-        </span>
+      <div class="post-data">
+        <h2 class="post-title"><%= link_to post.title, user_post_path(@user, post) %></h2>
+        <section class="counters">
+          Comments: <%= post.comments_counter || 0 %>
+          Likes: <%= post.likes_counter || 0 %>
+        </section>
       </div>
-      <ul class='post-comment'>
-        <% if post.last_five %>
-          <p>No comments added!</p>
-        <% else %>
-          <% post.last_five.each do |comment| %>
-            <li><%= comment.users.name %>: <%= comment.text %></li>
-          <% end %>
-        <% end %>
-      </ul>
     <% end %>
   </div>
 </section>

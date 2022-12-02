@@ -10,8 +10,8 @@ class Post < ApplicationRecord
   validates :comments_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  def last_five
-    comments.includes([:author]).last(5)
+  def last_five_comments
+    @comments = comments.includes([:author]).last(5)
   end
 
   def update_posts_counter
