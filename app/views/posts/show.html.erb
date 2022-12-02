@@ -9,6 +9,7 @@
         Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %>
       </p>
     </div>
+    <%= render "likes/likes_form" %>
   </div>
   <div class="comment-info">
     <section class="comment-form">
