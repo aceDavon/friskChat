@@ -1,0 +1,13 @@
+<% @users.each do |user|%>
+    <div class="container">
+        <div class="image-container">
+          <img src=<%= user.photo %> class="img-contained" />
+        </div>
+        <div class="txt-container">
+          <span class="txt-box"><%= link_to user.name, user_path(user) %></span>
+          <span class="posts-count">
+            Posts Count: <%= user.posts.length %>
+          </span>
+        </div>
+    </div>
+  <% end %>

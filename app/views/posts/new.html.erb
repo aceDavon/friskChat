@@ -1,0 +1,16 @@
+<section class="form-container">
+  <%= form_with model: @post, url: user_posts_path, class: "post-form" do |f|%>
+    <div class="form-blocks">
+      <span class="form-header">Create New Post</span>
+    </div>
+    <div class="form-blocks">
+      <%= f.text_field :title, placeholder: "Post Title", class: "form-input" %>
+    </div>
+    <div class="form-blocks">
+      <%= f.text_field :text, placeholder: "Post Text", class: "form-input" %>
+    </div>
+    <div class="form-blocks">
+      <%= f.submit "submit", class: "primary-btn" %>
+    </div>
+  <% end %>
+</section>

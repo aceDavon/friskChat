@@ -1,24 +1,45 @@
-<section class="container">
-  <div class="post-info">
-    <div class="post-title-box">
-      <p class="post-title">Post : <%= @post.title %> by <%= @post.author.name %></p>
-     
+<section class="comment-container">
+  <div class="comment-info">
+    <div class="comment-title-box">
+      <p class="comment-title">Post : <%= @post.title %> by <%= @post.author.name %></p>
     </div>
-    <p><%= @post.text %></p>
-     <p class="comment-text">Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+    <div class="comment-info">
+      <p><%= @post.text %></p>
+      <p class="comment-text">
+        Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %>
+      </p>
+    </div>
+    <%= render "likes/likes_form" %>
   </div>
   <div class="comment-info">
-    <% @post.last_five.each do |comment| %>
-      <div>
-        <p>
-          <span>
-            <%= comment.author.name %>:
-          </span>
-          <span>
-            <%= comment.text %>
-          </span>
-        </p>
-      </div>
-    <% end %>
+    <section class="comment-form">
+        <%= form_with model: Comment, url: user_post_comments_path(@post.author, @post) do |f| %>
+          <div class="form-blocks">
+            <span class="form-header">Comment on Post</span>
+          </div>
+          <div class="form-blocks">
+            <%= f.text_field :text, placeholder: "Comment text", class: "form-input" %>
+          </div>
+          <div class="form-blocks">
+            <%= f.submit "submit", class: "primary-btn" %>
+          </div>
+      <% end %>
+    </section>
+    <section class="comments-section">
+      <p class="comment-author">
+        <% if @post_comments.length != 0 %>
+          <%= @post_comments.includes([:author]).each do |comment| %>
+            <p class="comment-author">
+              <%= comment.author.name %>
+            </p>
+            <p class="comment-author">
+              <%= comment.text %>
+            </p>
+          <% end %>
+        <% else %>
+          <span class="empty-comment">No comments added for this post yet :(</span>
+        <% end %>
+      </p>
+    </section>
   </div>
 </section>

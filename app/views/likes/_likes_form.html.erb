@@ -1,0 +1,7 @@
+<section>
+  <%= form_with model: Like, url: user_post_likes_path(@user, @post), class: "like-form" do |f|%>
+    <div class="form-blocks">
+      <%= f.submit "like", class: "primary-btn" %>
+    </div>
+  <% end %>
+</section>
