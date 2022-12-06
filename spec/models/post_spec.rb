@@ -15,7 +15,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'Method should return false' do
-      expect(@new_post.last_five.length).to be 0
+      expect(@new_post.last_five_comments.length).to be 0
     end
 
     it 'likes counter validations should return true' do
