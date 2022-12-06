@@ -5,7 +5,7 @@ RSpec.describe 'posts/index.html.erb', type: :feature do
     @user = User.create(name: 'Motunrayo',
                         photo: 'https://picsum.photos/200',
                         bio: 'Abuja Real Lady',
-                      posts_counter: 0)
+                        posts_counter: 0)
     @first_post = Post.create(author_id: @user.id, title: 'Hello 1', text: 'This is my first post', comments_counter: 0, likes_counter: 0)
     @last_post = Post.create(author_id: @user.id, title: 'Hello 4', text: 'This is my fourth post', comments_counter: 0, likes_counter: 0)
     Comment.create(post_id: @last_post.id, author_id: @user.id, text: 'This is the 1st comment on the 4th post')
