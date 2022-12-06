@@ -12,12 +12,29 @@
     </div>
   </div>
   <div class="user-posts">
-    <% @user.posts.each do |post| %>
+    <% @user.posts.includes([:comments]).each do |post| %>
       <div class="post-data">
         <h2 class="post-title"><%= link_to post.title, user_post_path(@user, post) %></h2>
+        <p class="text-center">
+          <%= post.text %>
+        </p>
         <section class="counters">
           Comments: <%= post.comments_counter || 0 %>
           Likes: <%= post.likes_counter || 0 %>
+        </section>
+        <section class="counters">
+          <% post.comments.each do |comment|%>
+            <% if comment %>
+              <p class="comment-author">
+              <%= comment.author.name %>
+            </p>
+            <p class="comment-author text-center">
+              <%= comment.text %>
+            </p>
+            <% else %>
+              <p class="text-center">No comments for this post yet :(</p>
+            <% end %>
+          <% end %>
         </section>
       </div>
     <% end %>

@@ -168,7 +168,8 @@
 
 .post-title,
 .comment-author,
-.empty-comment {
+.empty-comment,
+.text-center {
   text-align: center;
 }
 
