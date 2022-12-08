@@ -6,7 +6,7 @@ class Ability
     #
     #   return unless user.present?
     #   can :read, :all
-    return unless user.admin
+    return unless user.is? :admin
 
     can :manage, :all
     return unless user.present?
