@@ -6,13 +6,12 @@ class Ability
     #
     #   return unless user.present?
     #   can :read, :all
-    return unless user.is? :admin
-
-    can :manage, :all
-    return unless user.present?
-
-    can :manage, Post, author_id: user.id
-    can :manage, Comment, author_id: user_id
+    if user.is? :admin
+      can :manage, :all
+    else
+      can :manage, Post, author_id: user.id
+      can :manage, Comment, author_id: user_id
+    end
   end
   #
   # The first argument to `can` is the action you are giving the user
