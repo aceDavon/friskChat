@@ -14,7 +14,13 @@ class User < ApplicationRecord
   validates_format_of :photo, with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: 'field is not a valid url'
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  ROLES = %i[admin default].freeze
+
   def recent_posts
     posts.includes([:author]).last(3)
+  end
+
+  def is?(query_role)
+    role == query_role.to_s
   end
 end
