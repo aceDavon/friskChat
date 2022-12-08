@@ -10,6 +10,9 @@
       </p>
     </div>
     <%= render "likes/likes_form" %>
+    <% if can? :destroy @post%>
+      <% button_to 'Delete', user_post_path(@user, @post), method: :delete %>
+    <% end %>
   </div>
   <div class="comment-info">
     <section class="comment-form">
