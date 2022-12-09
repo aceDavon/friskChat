@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # Web Routes
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'users#index'
@@ -9,6 +10,16 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :new, :create, :show] do
       resources :comments, only: [:new, :create]
       resources :likes, only: [:create]
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users do
+        resources :posts, format: :json do
+          resources :comments, format: :json
+        end
+      end
     end
   end
 end
