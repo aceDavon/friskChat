@@ -24,14 +24,10 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   def create
     @post = Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_url(@post), notice: "post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      render json: { message: 'Post created successfully' }, status: :created
+    else
+      render json: { message: 'Could not create post' }, status: :unprocessable_entity
     end
   end
 
@@ -62,6 +58,8 @@ class Api::V1::PostsController < Api::V1::ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render json: { message: 'Post not found for this user' }, status: :not_found
     end
 
     # Only allow a list of trusted parameters through.

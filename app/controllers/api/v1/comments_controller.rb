@@ -1,5 +1,5 @@
 class Api::V1::CommentsController < Api::V1::ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   # GET /comments or /comments.json
   def index
@@ -9,7 +9,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
 
   # comment /comments or /comments.json
   def create
-    @comment = Comment.new(text: params[:comment][:text], post_id:, user_id:)
+    @comment = Comment.new({ text: params[:comment][:text], post_id: params[:post_id], author_id: params[:user_id] })
 
     if @comment.save
       render json: @comment, status: :ok
