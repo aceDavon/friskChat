@@ -80,6 +80,6 @@ end
 gem 'cancancan'
 gem 'devise'
 
-gem "devise-jwt", "~> 0.10.0"
+gem 'devise-jwt', '~> 0.10.0'
 
-gem "rack-cors", "~> 1.1"
+gem 'rack-cors', '~> 1.1'

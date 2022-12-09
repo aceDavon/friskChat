@@ -36,19 +36,20 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "comment was successfully destroyed." }
+      format.html { redirect_to comments_url, notice: 'comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.fetch(:comment, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = comment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.fetch(:comment, {})
+  end
 end
